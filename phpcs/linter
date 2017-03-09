@@ -1,6 +1,5 @@
 #!/bin/bash
 
 PHPCS_FORMAT="${PHPCS_FORMAT:-source}"
-COMPOSER_VENDOR_BIN=`composer.phar global config bin-dir --absolute`
-$COMPOSER_VENDOR_BIN/phpcs --standard=PSR2 --report=$PHPCS_FORMAT app
-
+COMPOSER_VENDOR_BIN=`php composer.phar global config bin-dir --absolute`
+${COMPOSER_VENDOR_BIN}/phpcs --standard=PSR2 --report=$PHPCS_FORMAT app
