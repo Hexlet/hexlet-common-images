@@ -1,4 +1,4 @@
-FROM node:11.12-slim
+FROM node:11.15-slim
 
 ENV NODE_ENV production
 

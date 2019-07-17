@@ -38,7 +38,7 @@ lint-php:
 	  hexlet/common-phpcs
 
 lint-sql:
-	docker run -t --read-only -v $(CURDIR)/phpcs/app:/usr/src/app \
+	docker run -t --read-only -v $(CURDIR)/sqlint/app:/usr/src/app \
 	  -v $(CURDIR)/sqlint/linter:/linter/linter \
 	  hexlet/common-sqlint
 
