@@ -4,6 +4,6 @@ import { cons, car, cdr, pair, } from 'hexlet-pairs';
 // f();
 // const b = A();
 
-// const square = a => a ** 2;
+const square = a => a ** 2;
 
 // export { square };
