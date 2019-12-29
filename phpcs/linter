@@ -4,4 +4,6 @@ export COMPOSER_NO_INTERACTION=1
 PHPCS_FORMAT="${PHPCS_FORMAT:-full}"
 LINTER_HOME=$(dirname $0)
 
-$LINTER_HOME/vendor/bin/phpcs -- --standard=PSR12 --report=$PHPCS_FORMAT -s /usr/src/app
+[ -f /usr/src/app/rules.xml ] && rules=/usr/src/app/rules.xml || rules= && xmlmerge --header --compact -o /tmp/phpcs.xml global.xml $rules
+
+$LINTER_HOME/vendor/bin/phpcs -- --standard=/tmp/phpcs.xml --report=$PHPCS_FORMAT -s /usr/src/app
