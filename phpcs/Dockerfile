@@ -8,7 +8,7 @@ COPY composer.json composer.json
 RUN composer install
 
 COPY linter /linter
-COPY global.xml /linter
+COPY phpcs.xml /linter
 # RUN chmod +x linter
 
 VOLUME /tmp
