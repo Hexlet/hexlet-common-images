@@ -11,6 +11,6 @@ then
     RULESET=
 fi
 
-xmlmerge --header --compact -o /tmp/phpcs.xml phpcs.xml $RULESET
+xmlmerge --header --compact -o /tmp/phpcs.xml $LINTER_HOME/phpcs.xml $RULESET
 
 $LINTER_HOME/vendor/bin/phpcs -- --standard=/tmp/phpcs.xml --report=$PHPCS_FORMAT -s /usr/src/app
