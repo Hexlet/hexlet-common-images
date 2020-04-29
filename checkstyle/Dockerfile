@@ -8,7 +8,9 @@ WORKDIR /linter
 COPY linter linter
 RUN chmod +x linter
 
-RUN wget --quiet "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.25/checkstyle-8.25-all.jar" -O checkstyle.jar
+COPY google_checks_hexlet_edition.xml google_checks_hexlet_edition.xml
+
+RUN wget --quiet "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.32/checkstyle-8.32-all.jar" -O checkstyle.jar
 
 ADD app /usr/src/app
 

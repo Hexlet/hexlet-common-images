@@ -3,5 +3,5 @@ dir=$(dirname $0)
 
 echo $dir
 
-java -jar $dir/checkstyle.jar -c $DIR/sun_checks.xml /usr/src/app
+java -jar $dir/checkstyle.jar -c $DIR/google_checks_hexlet_edition.xml /usr/src/app
 
