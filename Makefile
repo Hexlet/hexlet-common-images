@@ -1,4 +1,4 @@
-build: build-php build-js build-java build-null build-sql build-python-flake8
+build: build-php build-js build-java build-null build-sql build-python-flake8 build-stylelint
 
 build-php:
 	docker build -t hexlet/common-phpcs phpcs
@@ -17,6 +17,9 @@ build-null:
 
 build-python-flake8:
 	docker build -t hexlet/common-python-flake8 python-flake8
+
+build-stylelint:
+	docker build -t hexlet/common-stylelint stylelint
 
 bash:
 	docker run -it -v $(CURDIR)/$(N)/app:/usr/src/app --read-only hexlet/common-$(N) /bin/bash
@@ -48,3 +51,9 @@ lint-python-flake8:
 	  -v $(CURDIR)/python-flake8/setup.cfg:/linter/setup.cfg \
 	  hexlet/common-python-flake8
 
+lint-css:
+	docker run -t --read-only -v $(CURDIR)/stylelint/app:/usr/src/app \
+	  -v $(CURDIR)/stylelint/package.json:/linter/package.json \
+	  -v $(CURDIR)/stylelint/.stylelintrc.yaml:/linter/.stylelintrc.yaml \
+	  -v $(CURDIR)/stylelint/linter:/linter/linter \
+	  hexlet/common-stylelint
