@@ -10,7 +10,7 @@ cp $LINTER_DIR/setup.cfg $OUTPUT_CONFIG
 
 if [ -f $RULESET ]
 then
-  $PYTHONPATH/bin/crudini --merge $OUTPUT_CONFIG < $RULESET
+  python3 -m crudini --merge $OUTPUT_CONFIG < $RULESET
 fi
 
 python3 -m flake8 --config=$OUTPUT_CONFIG /usr/src/app
