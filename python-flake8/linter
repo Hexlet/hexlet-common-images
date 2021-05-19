@@ -3,4 +3,14 @@
 export LINTER_DIR=$(dirname $0)
 export PYTHONPATH=$LINTER_DIR/lib
 
-python3 -m flake8 --config=$LINTER_DIR/setup.cfg /usr/src/app
+OUTPUT_CONFIG=/tmp/setup.cfg
+RULESET=/usr/src/app/setup.cfg
+
+cp $LINTER_DIR/setup.cfg $OUTPUT_CONFIG
+
+if [ -f $RULESET ]
+then
+  crudini --merge $OUTPUT_CONFIG < $RULESET
+fi
+
+python3 -m flake8 --config=$OUTPUT_CONFIG /usr/src/app
