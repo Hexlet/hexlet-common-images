@@ -5,8 +5,7 @@ RUN apt-get install -y wget
 
 WORKDIR /linter
 
-COPY linter linter
-RUN chmod +x linter
+COPY linter .
 
 COPY google_checks_hexlet_edition.xml google_checks_hexlet_edition.xml
 

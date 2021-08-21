@@ -58,3 +58,9 @@ lint-layout-designer:
 	  -v $(CURDIR)/layout-designer-lint/.htmlhintrc:/linter/.htmlhintrc \
 	  -v $(CURDIR)/layout-designer-lint/linter:/linter/linter \
 	  hexlet/common-layout-designer-lint
+
+lint-java:
+	docker run -t --read-only -v $(CURDIR)/checkstyle/app:/usr/src/app \
+	  -v $(CURDIR)/checkstyle/google_checks_hexlet_edition.xml:/linter/google_checks_hexlet_edition.xml \
+	  -v $(CURDIR)/checkstyle/linter:/linter/linter \
+	  hexlet/common-checkstyle
