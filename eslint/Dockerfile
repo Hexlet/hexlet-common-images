@@ -7,12 +7,13 @@ WORKDIR /linter
 RUN npm i -g npm-check-updates
 
 COPY package.json .
-COPY .eslintrc.yml .
-
 RUN npm install
 
+COPY .eslintrc.yml .
 COPY linter .
 
 # VOLUME /tmp
+
+ENV NODE_PATH /linter/node_modules
 
 CMD ./linter
