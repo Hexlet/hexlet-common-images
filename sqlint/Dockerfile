@@ -1,17 +1,11 @@
-FROM ruby
-
-# Проблема в том что SQL выполняется в среде Node.js, а значит там нет рубей. Нам нужен линтер либо в бинарнике, либо на js.
-# https://github.com/sqlfluff/sqlfluff
+FROM python:3.8-alpine
 
 WORKDIR /linter
 
-RUN gem install --install-dir vendor sqlint
+# https://docs.sqlfluff.com/en/stable/
+RUN pip install -U --target ./lib sqlfluff==0.6.4
 
-ENV GEM_HOME=vendor
-
-COPY linter /linter
-# RUN chmod +x linter
-
-VOLUME /tmp
+COPY linter .
+COPY setup.cfg .
 
 CMD ./linter
