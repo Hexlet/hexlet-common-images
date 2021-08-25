@@ -43,7 +43,7 @@ lint-php:
 lint-sql:
 	docker run -t --read-only -v $(CURDIR)/sqlint/app:/usr/src/app \
 	  -v $(CURDIR)/sqlint/linter:/linter/linter \
-		-v $(CURDIR)/sqlint/setup.cfg:/linter/setup.cfg \
+	  -v $(CURDIR)/sqlint/setup.cfg:/linter/setup.cfg \
 	  hexlet/common-sqlint
 
 lint-python-flake8:
