@@ -3,4 +3,4 @@
 LINTER_HOME=$(dirname $0)
 export PYTHONPATH=$LINTER_HOME/lib
 
-python3 -m sqlfluff lint /usr/src/app
+python3 -m sqlfluff lint /usr/src/app --dialect=postgres
