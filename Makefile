@@ -21,6 +21,9 @@ build-python-flake8:
 build-layout-designer-lint:
 	docker build -t hexlet/common-layout-designer-lint layout-designer-lint
 
+build-ruby:
+	docker build -t hexlet/common-rubocop rubocop
+
 bash:
 	docker run -it -v $(CURDIR)/$(N)/app:/usr/src/app --read-only hexlet/common-$(N) /bin/bash
 
@@ -65,3 +68,10 @@ lint-java:
 	  -v $(CURDIR)/checkstyle/google_checks_hexlet_edition.xml:/linter/google_checks_hexlet_edition.xml \
 	  -v $(CURDIR)/checkstyle/linter:/linter/linter \
 	  hexlet/common-checkstyle
+
+lint-ruby:
+	docker run -t --read-only -v $(CURDIR)/rubocop/app:/usr/src/app \
+		-v $(CURDIR)/rubocop/linter:/linter/linter \
+		-v $(CURDIR)/rubocop/Gemfile:/linter/Gemfile \
+		-v $(CURDIR)/rubocop/.rubocop.yml:/linter/.rubocop.yml \
+		hexlet/common-rubocop

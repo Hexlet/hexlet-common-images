@@ -1,0 +1,5 @@
+#!/bin/bash
+
+LINTER_HOME=$(dirname $0)
+
+$LINTER_HOME/vendor/bundle/bin/rubocop -c $LINTER_HOME/.rubocop.yml /usr/src/app
