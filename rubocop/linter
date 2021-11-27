@@ -2,4 +2,6 @@
 
 LINTER_HOME=$(dirname $0)
 
-$LINTER_HOME/vendor/bundle/bin/rubocop -c $LINTER_HOME/.rubocop.yml /usr/src/app
+export GEM_HOME=$LINTER_HOME/vendor/bundler
+
+$GEM_HOME/bin/rubocop -c $LINTER_HOME/.rubocop.yml /usr/src/app

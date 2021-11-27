@@ -1,20 +1,14 @@
-FROM ruby:3.0.1
+FROM ubuntu:21.10
+
+RUN apt-get update && apt-get install -yq ruby
+
+ENV GEM_HOME /linter/vendor/bundler
+
+RUN gem install rubocop rubocop-minitest rubocop-rails
 
 WORKDIR /linter
 
-RUN apt-get update
-RUN apt-get install -y xvfb unzip
-
-
-RUN bundle config set --local path '/linter/vendor/bundle'
-RUN bundle config set --local bin '/linter/vendor/bundle/bin'
-
-COPY Gemfile Gemfile
-RUN bundle install
-
-COPY linter linter
-COPY .rubocop.yml .rubocop.yml
-
-VOLUME /tmp
+COPY linter .
+COPY .rubocop.yml .
 
 CMD ./linter
