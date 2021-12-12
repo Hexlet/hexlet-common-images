@@ -1,16 +1,12 @@
-FROM openjdk:15-slim
+FROM openjdk:17-slim
 
-RUN apt-get -y update
-RUN apt-get install -y wget
+RUN apt-get update && apt-get install -yq wget
 
 WORKDIR /linter
 
+RUN wget -q "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.2/checkstyle-9.2-all.jar" -O checkstyle.jar
+
 COPY linter .
-
-COPY google_checks_hexlet_edition.xml google_checks_hexlet_edition.xml
-
-RUN wget --quiet "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.45.1/checkstyle-8.45.1-all.jar" -O checkstyle.jar
-
-ADD app /usr/src/app
+COPY google_checks_hexlet_edition.xml .
 
 CMD ./linter
