@@ -190,6 +190,7 @@
     <module name="Indentation">
       <property name="basicOffset" value="4"/>
     </module>
+    <module name="OneStatementPerLine"/>
 
     <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
     <module name="SuppressionXpathFilter">
