@@ -7,6 +7,6 @@ WORKDIR /linter
 RUN wget -q "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.2/checkstyle-9.2-all.jar" -O checkstyle.jar
 
 COPY linter .
-COPY google_checks_hexlet_edition.xml .
+COPY sun_checks_hexlet_edition.xml .
 
 CMD ./linter
