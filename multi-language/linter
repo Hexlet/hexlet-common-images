@@ -37,3 +37,6 @@ then
 fi
 
 python3 -m flake8 --config=$OUTPUT_CONFIG /usr/src/app
+
+# Java
+java -jar $LINTER_HOME/checkstyle.jar -c $LINTER_HOME/sun_checks_hexlet_edition.xml /usr/src/app

@@ -86,5 +86,6 @@ lint-multi-language:
 		-v $(CURDIR)/multi-language/.eslintrc.yml:/linter/.eslintrc.yml \
 		-v $(CURDIR)/multi-language/composer.json:/phpcs/composer.json \
 		-v $(CURDIR)/multi-language/setup.cfg:/linter/setup.cfg \
+		-v $(CURDIR)/multi-language/sun_checks_hexlet_edition.xml:/linter/sun_checks_hexlet_edition.xml.xml \
 		-v $(CURDIR)/multi-language/linter:/linter/linter \
 		hexlet/common-multi-language

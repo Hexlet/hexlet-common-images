@@ -47,7 +47,15 @@ RUN pip install -U --target ./lib flake8==3.9.2 crudini
 
 COPY setup.cfg setup.cfg
 
+# Configure Java linter
+RUN apt-get update && apt-get install -yq wget openjdk-17-jdk
+
+RUN wget -q "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.2/checkstyle-9.2-all.jar" -O checkstyle.jar
+
+COPY sun_checks_hexlet_edition.xml .
+
 COPY linter .
+
 RUN chmod +x linter
 
 CMD ./linter
