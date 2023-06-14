@@ -32,9 +32,11 @@ push:
 
 lint-js:
 	docker run -t --read-only -v $(CURDIR)/eslint/app:/usr/src/app \
-	  -v $(CURDIR)/eslint/package.json:/linter/package.json \
-	  -v $(CURDIR)/eslint/.eslintrc.yml:/linter/.eslintrc.yml \
-	  -v $(CURDIR)/eslint/linter:/linter/linter \
+	  -v $(CURDIR)/eslint/package.json:/usr/src/linter/package.json \
+	  -v $(CURDIR)/eslint/.eslintrc.yml:/usr/src/linter/.eslintrc.yml \
+		-v $(CURDIR)/eslint/tsconfig.json:/usr/src/linter/tsconfig.json \
+		-v $(CURDIR)/eslint/tsconfig.eslint.json:/usr/src/linter/tsconfig.eslint.json \
+	  -v $(CURDIR)/eslint/linter:/usr/src/linter/linter \
 	  hexlet/common-eslint
 
 lint-php:

@@ -1,21 +1,26 @@
 ---
 
-parser: "@babel/eslint-parser"
+parser: "@typescript-eslint/parser"
 
 parserOptions:
   requireConfigFile: false
   babelOptions:
     root: /usr/src/app
+  project:
+    - "/usr/src/linter/tsconfig.eslint.json"
 
 extends:
   - airbnb
+  - "airbnb-typescript"
   - "plugin:jest/recommended"
   - "plugin:react/recommended"
   - "plugin:react-hooks/recommended"
+  - "plugin:@typescript-eslint/recommended"
 
 plugins:
   - jest
   - "@babel"
+  - "@typescript-eslint"
 
 env:
   node: true
