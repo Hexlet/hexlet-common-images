@@ -1,0 +1,21 @@
+@mixin opacity-transition-1s {
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+@mixin link-hover {
+  opacity: 0.5;
+
+  @include opacity-transition-1s;
+}
+
+@mixin link {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    @include link-hover;
+  }
+}

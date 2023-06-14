@@ -1,0 +1,8 @@
+run:
+    allow-parallel-runners: true
+    modules-download-mode: readonly
+    issues-exit-code: 0
+
+linters:
+    enable:
+        - revive

@@ -1,5 +1,38 @@
 #!/bin/bash
+shopt -s globstar
 
 LINTER_HOME=$(dirname $0)
+FILE_PATH=/usr/src/app/**/
 
-$LINTER_HOME/node_modules/.bin/stylelint "/usr/src/app/**/*.{css,scss}" --config $LINTER_HOME/.stylelintrc && $LINTER_HOME/node_modules/.bin/htmlhint "/usr/src/app/**/*.html" --config $LINTER_HOME/.htmlhintrc
+CSS_FILE_GLOB=$FILE_PATH*.css
+SCSS_FILE_GLOB=$FILE_PATH*.scss
+HTML_FILE_GLOB=$FILE_PATH*.html
+PUG_FILE_GLOB=$FILE_PATH*.pug
+
+EXIT_CODE=0
+
+set_exit_code() {
+  if [ ! $? == "0" ]; then EXIT_CODE=1; fi
+}
+
+if compgen -G $PUG_FILE_GLOB > /dev/null; then
+  $LINTER_HOME/node_modules/.bin/pug-lint $PUG_FILE_GLOB --config $LINTER_HOME/.pug-lintrc
+  set_exit_code
+fi
+
+if compgen -G $HTML_FILE_GLOB > /dev/null; then
+  $LINTER_HOME/node_modules/.bin/htmlhint $HTML_FILE_GLOB --config $LINTER_HOME/.htmlhintrc
+  set_exit_code
+fi
+
+if compgen -G $CSS_FILE_GLOB > /dev/null; then
+  $LINTER_HOME/node_modules/.bin/stylelint $CSS_FILE_GLOB --config $LINTER_HOME/.stylelintrc
+  set_exit_code
+fi
+
+if compgen -G $SCSS_FILE_GLOB > /dev/null; then
+  $LINTER_HOME/node_modules/.bin/stylelint $SCSS_FILE_GLOB --config $LINTER_HOME/.stylelintrc
+  set_exit_code
+fi
+
+exit $EXIT_CODE

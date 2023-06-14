@@ -1,0 +1,42 @@
+#!/bin/bash
+
+LINTER_HOME=$(dirname $0)
+
+# JavaScript
+ESLINT_FORMAT="${ESLINT_FORMAT:-stylish}"
+
+NODE_PATH=$LINTER_HOME/node_modules $LINTER_HOME/node_modules/.bin/eslint -f $ESLINT_FORMAT -c $LINTER_HOME/.eslintrc.yml --ext .js,.jsx /usr/src/app
+
+# PHP
+export COMPOSER_NO_INTERACTION=1
+PHPCS_FORMAT="${PHPCS_FORMAT:-full}"
+
+PHPCS_RULESET=/usr/src/app/php/ruleset.xml
+
+if [ ! -f $PHPCS_RULESET ]
+then
+    PHPCS_RULESET=
+fi
+
+xmlmerge --header --compact -o /tmp/phpcs.xml $LINTER_HOME/phpcs.xml $PHPCS_RULESET
+
+$LINTER_HOME/vendor/bin/phpcs -- --standard=/tmp/phpcs.xml --report=$PHPCS_FORMAT -s /usr/src/app
+
+# Python
+export LINTER_DIR=$(dirname $0)
+export PYTHONPATH=$LINTER_DIR/lib
+
+OUTPUT_CONFIG=/tmp/setup.cfg
+FLAKE8_RULESET=/usr/src/app/setup.cfg
+
+cp $LINTER_DIR/setup.cfg $OUTPUT_CONFIG
+
+if [ -f $FLAKE8_RULESET ]
+then
+  python3 $PYTHONPATH/bin/crudini --merge $OUTPUT_CONFIG < $FLAKE8_RULESET
+fi
+
+python3 -m flake8 --config=$OUTPUT_CONFIG /usr/src/app
+
+# Java
+java -jar $LINTER_HOME/checkstyle.jar -c $LINTER_HOME/sun_checks_hexlet_edition.xml /usr/src/app

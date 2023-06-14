@@ -1,0 +1,8 @@
+#!/bin/sh
+
+LINTER_DIR=$(dirname `realpath $0`)
+
+CONFIG=$LINTER_DIR/.golangci.yml
+
+cd /usr/src/app
+$LINTER_DIR/bin/golangci-lint run --config=$CONFIG

@@ -1,0 +1,33 @@
+doctype html
+html(lang='ru')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Hexlet Profile
+  body
+    //- BEGIN
+    section.profile-links
+      h1 #{user.name} #{user.surname}
+      nav
+        a(href='#') Настройки
+        .divider
+
+        a(href='#') Промокод
+        a(href='#') Доступ в подарок
+        .divider
+
+        unless user.role === 'user'
+          a(href='#') Учительская
+          a(href='#') Менторство
+          a(href='#') Маркетинг
+          .divider
+
+        a(href='#') Помощь
+        button Выйти
+
+      if user.testing && user.role === 'admin'
+        section
+          h2 Сводка по тестированию
+          include data/testing.pug
+    //- END

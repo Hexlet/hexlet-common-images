@@ -1,0 +1,20 @@
+---
+extends:
+  - airbnb
+  - "plugin:jest/recommended"
+
+plugins:
+  - jest
+
+env:
+  node: true
+  jest: true
+
+rules:
+  import/no-unresolved: 0
+  import/extensions: 0
+  no-underscore-dangle:
+    - error
+    - allow:
+      - __dirname
+      - __filename

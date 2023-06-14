@@ -1,9 +1,9 @@
-FROM python:3.8-alpine
+FROM python:3.10-slim
 
 WORKDIR /linter
 
 # https://docs.sqlfluff.com/en/stable/
-RUN pip install -U --target ./lib sqlfluff==0.7.1
+RUN pip install -U --target ./lib sqlfluff==2.0.3
 
 COPY linter .
 

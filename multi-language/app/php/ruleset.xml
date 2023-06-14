@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+	<exclude-pattern>example1.php</exclude-pattern>
+</ruleset>

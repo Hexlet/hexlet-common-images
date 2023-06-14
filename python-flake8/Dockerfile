@@ -4,7 +4,7 @@ RUN apk add --no-cache bash
 
 WORKDIR /linter
 
-RUN pip install -U --target ./lib flake8==3.9.2 crudini
+RUN pip install -U --target ./lib flake8
 
 COPY linter linter
 COPY setup.cfg setup.cfg

@@ -2,4 +2,4 @@
 
 LINTER_HOME=$(dirname $0)
 
-java -jar $LINTER_HOME/checkstyle.jar -c $LINTER_HOME/sun_checks_hexlet_edition.xml /usr/src/app
+java -jar $LINTER_HOME/checkstyle.jar -c $LINTER_HOME/sun_checks_hexlet_edition.xml -e /usr/src/app/target /usr/src/app
