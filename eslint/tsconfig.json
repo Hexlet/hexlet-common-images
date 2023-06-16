@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
     "esModuleInterop": true
-  }
+  },
+  "include": ["/usr/src/**/*.jsx", "/usr/src/**/*.ts", "/usr/src/**/*.js"]
 }

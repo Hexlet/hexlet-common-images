@@ -37,7 +37,7 @@ push:
 	docker push hexlet/common-$(N)
 
 lint-js:
-	docker run -t --read-only -v $(CURDIR)/eslint/app:/usr/src/app \
+	docker run --rm -t --read-only -v $(CURDIR)/eslint/app:/usr/src/app \
 	  -v $(CURDIR)/eslint/package.json:/usr/src/linter/package.json \
 	  -v $(CURDIR)/eslint/.eslintrc.yml:/usr/src/linter/.eslintrc.yml \
 		-v $(CURDIR)/eslint/tsconfig.json:/usr/src/linter/tsconfig.json \

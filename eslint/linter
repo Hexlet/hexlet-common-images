@@ -3,4 +3,4 @@
 ESLINT_FORMAT="${ESLINT_FORMAT:-stylish}"
 LINTER_HOME=$(dirname $0)
 
-NODE_PATH=$LINTER_HOME/node_modules $LINTER_HOME/node_modules/.bin/eslint -f $ESLINT_FORMAT -c $LINTER_HOME/.eslintrc.yml --ext .js,.jsx,.ts /usr/src/app
+NODE_PATH=$LINTER_HOME/node_modules $LINTER_HOME/node_modules/.bin/eslint -f $ESLINT_FORMAT -c $LINTER_HOME/.eslintrc.yml /usr/src/app
