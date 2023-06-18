@@ -5,6 +5,7 @@ export default class MyComponent extends React.Component {
 
   render() {
     const { title } = this.props;
+    console.log(title);
     return title;
   }
 }
