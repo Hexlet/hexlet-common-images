@@ -41,7 +41,6 @@ lint-js:
 	  -v $(CURDIR)/eslint/package.json:/usr/src/linter/package.json \
 	  -v $(CURDIR)/eslint/.eslintrc.yml:/usr/src/linter/.eslintrc.yml \
 		-v $(CURDIR)/eslint/tsconfig.json:/usr/src/linter/tsconfig.json \
-		-v $(CURDIR)/eslint/tsconfig.eslint.json:/usr/src/linter/tsconfig.eslint.json \
 	  -v $(CURDIR)/eslint/linter:/usr/src/linter/linter \
 	  hexlet/common-eslint
 
