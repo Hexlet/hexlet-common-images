@@ -7,7 +7,7 @@ parserOptions:
   babelOptions:
     root: /usr/src/linter
   project:
-    - "/usr/src/linter/tsconfig.json"
+    - "./tsconfig.json"
 
 extends:
   - airbnb
