@@ -5,4 +5,8 @@ public class HelloWorld
 
   }
 
+    public String doGreeting() {
+        return "Hello";
+    }
+
 }
