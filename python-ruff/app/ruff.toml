@@ -1,3 +1,4 @@
+# extend = "/usr/src/linter/ruff.toml" in exercises
 extend = "/linter/ruff.toml"
 
 line-length = 100
