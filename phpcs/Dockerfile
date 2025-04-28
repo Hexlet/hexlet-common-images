@@ -1,4 +1,4 @@
-FROM composer:2.2.24
+FROM composer:2.8.8
 
 WORKDIR /linter
 
@@ -9,7 +9,7 @@ RUN composer install
 
 COPY linter /linter
 COPY phpcs.xml /linter
-# RUN chmod +x linter
+RUN chmod +x linter
 
 VOLUME /tmp
 
