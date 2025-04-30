@@ -5,7 +5,7 @@ LINTER_HOME=$(dirname $0)
 # JavaScript
 ESLINT_FORMAT="${ESLINT_FORMAT:-stylish}"
 
-NODE_PATH=$LINTER_HOME/node_modules $LINTER_HOME/node_modules/.bin/eslint -f $ESLINT_FORMAT -c $LINTER_HOME/.eslintrc.yml --ext .js,.jsx /usr/src/app
+NODE_PATH=$LINTER_HOME/node_modules $LINTER_HOME/node_modules/.bin/eslint -f $ESLINT_FORMAT -c $LINTER_HOME/eslint.config.js --ext .js,.jsx /usr/src/app
 
 # PHP
 export COMPOSER_NO_INTERACTION=1

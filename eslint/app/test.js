@@ -1,3 +1,3 @@
 test('description', () => {
-  expect('lal').toEqual('lala');
-});
+  expect('lal').toBe('lala')
+})

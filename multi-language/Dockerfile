@@ -38,7 +38,7 @@ RUN npm i -g npm-check-updates
 COPY package.json .
 RUN npm install
 
-COPY .eslintrc.yml .
+COPY eslint.config.js .
 
 # Configure Python linter
 RUN apt-get update && apt-get -yq install python3-pip
