@@ -8,8 +8,8 @@
 
 // export { square };
 
-const _jopa = 'lala';
+const _jopa = 'lala'
 
-console.log(__dirname);
-console.log(__filename);
-console.log(_jopa);
+console.log(__dirname)
+console.log(__filename)
+console.log(_jopa)
