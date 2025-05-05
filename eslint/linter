@@ -4,4 +4,4 @@ ESLINT_FORMAT="${ESLINT_FORMAT:-stylish}"
 LINTER_HOME=$(dirname $0)
 
 cd /usr/src/app
-$LINTER_HOME/node_modules/.bin/eslint -f $ESLINT_FORMAT -c $LINTER_HOME/eslint.config.js --ext .js,.jsx,.ts,.cjs .
+$LINTER_HOME/node_modules/.bin/eslint -f $ESLINT_FORMAT -c $LINTER_HOME/eslint.config.js .

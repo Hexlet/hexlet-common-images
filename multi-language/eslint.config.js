@@ -7,10 +7,11 @@ import stylistic from '@stylistic/eslint-plugin'
 import vitest from '@vitest/eslint-plugin'
 
 export default defineConfig([
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
   globalIgnores(['**/dist/']),
   stylistic.configs.recommended,
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], languageOptions: { globals: { ...globals.browser, ...globals.node } } },
+  { plugins: { js }, extends: ['js/recommended'] },
+  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   tseslint.configs.recommended,
   {
     ...pluginReact.configs.flat.recommended,
@@ -22,7 +23,12 @@ export default defineConfig([
   },
   pluginReact.configs.flat['jsx-runtime'],
   {
-    files: ['tests/**', '__tests__/**', '**/test*.*', '**/*.test.*'], // or any other pattern
+    files: [
+      'tests/**.{js,mjs,cjs,ts,jsx,tsx}',
+      '__tests__/**.{js,mjs,cjs,ts,jsx,tsx}',
+      '**/test*.{js,mjs,cjs,ts,jsx,tsx}',
+      '**/*.test.{js,mjs,cjs,ts,jsx,tsx}'
+    ],
     ...vitest.configs.recommended,
     languageOptions: {
       globals: {
