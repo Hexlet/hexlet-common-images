@@ -5,6 +5,7 @@ import pluginReact from 'eslint-plugin-react'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import stylistic from '@stylistic/eslint-plugin'
 import vitest from '@vitest/eslint-plugin'
+import markdown from 'eslint-plugin-markdown'
 
 export default defineConfig([
   { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
@@ -59,6 +60,27 @@ export default defineConfig([
           ignoreRestSiblings: true,
         },
       ],
+    },
+  },
+  /* Markdown javascript blocks */
+  {
+    plugins: {
+      markdown,
+    },
+  },
+  {
+    files: ['**/*.md'],
+    processor: 'markdown/markdown',
+  },
+  {
+    // Optionally, customize the configuration ESLint uses for ```js
+    // fenced code blocks inside .md files.
+    files: ['**/*.md/*.{js,jsx,javascript}'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+      'no-undef': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+      'no-constant-binary-expression': 'off',
     },
   },
 ])
