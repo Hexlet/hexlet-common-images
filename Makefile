@@ -69,10 +69,10 @@ lint-python-flake8:
 
 lint-python-ruff:
 	docker run --rm -t --read-only -v $(CURDIR)/python-ruff/app:/usr/src/app \
-	  -v $(CURDIR)/python-ruff/linter:/linter/linter \
-	  -v $(CURDIR)/python-ruff/ruff.toml:/linter/ruff.toml \
-	  -v /var/tmp/.ruff_cache \
-	  $(REGISTRY)/common-python-ruff
+		-v $(CURDIR)/python-ruff/linter:/linter/linter \
+		-v $(CURDIR)/python-ruff/ruff.toml:/linter/ruff.toml \
+		-v /var/tmp/.ruff_cache \
+		$(REGISTRY)/common-python-ruff
 
 
 lint-layout-designer:

@@ -1,8 +1,26 @@
+version: "2"
 run:
-    allow-parallel-runners: true
-    modules-download-mode: readonly
-    issues-exit-code: 0
-
+  modules-download-mode: readonly
+  issues-exit-code: 0
+  allow-parallel-runners: true
 linters:
-    enable:
-        - revive
+  enable:
+    - revive
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

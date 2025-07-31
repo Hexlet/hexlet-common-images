@@ -6,7 +6,8 @@ WORKDIR /linter
 ENV GOPATH=/linter
 ENV PATH=$PATH:$GOPATH/bin
 
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.52.2
+RUN go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.3.0
+ENV PATH=/exercises-go/bin:/root/go/bin:$PATH
 
 ENV GOFLAGS=-buildvcs=false
 ENV GOLANGCI_LINT_CACHE=/var/tmp/.cache
@@ -16,4 +17,4 @@ ENV GOTMPDIR=/var/tmp/.cache
 COPY linter .
 COPY .golangci.yml .
 
-CMD ./linter
+CMD ["./linter"]
