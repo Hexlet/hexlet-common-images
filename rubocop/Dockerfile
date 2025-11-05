@@ -8,7 +8,7 @@ RUN cd /var/tmp/ruby-install-0.9.0 \
     && make install \
     && rm -rf /var/tmp/ruby-install-0.9.0
 
-RUN ruby-install --system ruby 3.2.2
+RUN ruby-install --system ruby 3.4.5
 
 ENV GEM_HOME /linter/vendor/bundler
 
